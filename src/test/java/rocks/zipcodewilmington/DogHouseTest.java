@@ -1,10 +1,13 @@
 package rocks.zipcodewilmington;
 
+import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Dog;
+import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
 import rocks.zipcodewilmington.animals.animal_storage.DogHouse;
-
+import rocks.zipcodewilmington.animals.Animal;
+import rocks.zipcodewilmington.animals.Mammal;
 import java.util.Date;
 
 /**
@@ -30,5 +33,81 @@ public class DogHouseTest {
 
         // Then
         DogHouse.getNumberOfDogs();
+    }
+
+    @Test
+    public void addTest() {
+        // Given (some
+        String name = "Milo";
+        Date birthDate = new Date();
+        Dog milo = new Dog(name, birthDate, 1);
+        DogHouse.clear();
+
+        // When
+        DogHouse.add(milo);
+
+
+        // Then
+        Assert.assertEquals(milo, DogHouse.getDogById(1));
+    }
+
+    @Test
+    public void removeTest() {
+        // Given (some
+        String name = "Milo";
+        Date birthDate = new Date();
+        Dog milo = new Dog(name, birthDate, 1);
+        DogHouse.clear();
+
+        // When
+        DogHouse.remove(1);
+
+        // Then
+        Assert.assertEquals(null, DogHouse.getDogById(1));
+    }
+
+    @Test
+    public void testRemoveTest() {
+        // Given (some
+        String name = "Milo";
+        Date birthDate = new Date();
+        Dog milo = new Dog(name, birthDate, 1);
+        DogHouse.clear();
+
+        // When
+        DogHouse.remove(milo);
+
+        // Then
+        Assert.assertEquals(null, DogHouse.getDogById(1));
+    }
+
+    @Test
+    public void getDogByIdTest() {
+        // Given (some
+        String name = "Milo";
+        Date birthDate = new Date();
+        Dog milo = new Dog(name, birthDate, 1);
+        DogHouse.clear();
+
+        // When
+        DogHouse.add(milo);
+
+        // Then
+        Assert.assertEquals(milo, DogHouse.getDogById(1));
+    }
+
+    @Test
+    public void getNumberOfDogs() {
+        // Given (some
+        String name = "Milo";
+        Date birthDate = new Date();
+        Dog milo = new Dog(name, birthDate, 1);
+        DogHouse.clear();
+
+        // When
+        DogHouse.add(milo);
+
+        // Then
+        Assert.assertEquals(1, DogHouse.getNumberOfDogs(), 0);
     }
 }
